@@ -18,6 +18,12 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @like.destroy
+
+    respond_to do |format|
+      format.json { head :no_contetn }
+      format.html { redirect_to :back, notice: 'Post dislike with success.' }
+    end
   end
 
   private
