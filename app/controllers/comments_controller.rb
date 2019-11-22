@@ -4,6 +4,17 @@ class CommentsController < ApplicationController
   before_action :set_post, only: [:create]
 
   def create
+    @comment = @post.comments.create(comment_params)
+
+    respond_to do |format|
+      if @comment.save
+        format.json { render json: @comment, status: :create }
+        format.html { redirect_to :back, notice: 'Comment created with success.' }
+      else
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back }
+      end
+    end
   end
 
   def destroy
