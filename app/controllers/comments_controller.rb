@@ -18,6 +18,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment.destroy
+
+    respond_to do |format|
+      format.json { render json: :no_contet }
+      format.html { redirect_to :back, notice: 'Comment deleted with success.' }
+    end
   end
 
   def update
