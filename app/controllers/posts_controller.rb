@@ -23,6 +23,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @post.comments
+  end
+
   def destroy
     @post.destroy
 
