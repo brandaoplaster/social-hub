@@ -9,7 +9,7 @@ class LikesController < ApplicationController
     respond_to do |format|
       if @like.save
         format.json { render json: @like }
-        format.html { redirect_to :back }
+        format.html { redirect_to :back, notice: 'Post liked with success.' }
       else
         format.json { render json: @like.errors, status: :unprocessable_entity }
         format.html { redirect_to :back }
