@@ -14,7 +14,15 @@ class FollowsController < ApplicationController
   end
 
   def destroy
-
+    respond_to do |format|
+      if current_user.stop_following(@user)
+        format.json { head :no_content }
+        format.html { redirect_to :back, notice: 'User has successfully stopped following' }
+      else
+        format.json { render json: nil, status: :unprocessable_entity }
+        format.html { redirect_to :back }
+      end
+    end
   end
 
   private
