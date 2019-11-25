@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   end
 
   def search
+    @user = current_user
+    @query = User.ransack(params[:id])
+    @users = @query.result(distinct: true)
   end
 
   private
