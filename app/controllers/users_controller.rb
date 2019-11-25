@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   end
 
   def followers
+    @following = @user.following_users
   end
 
   def followings
+    @followers = @user.followers_by_type('User')
   end
 
   def search
