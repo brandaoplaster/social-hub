@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :followings, followers]
 
   def show
+    @posts = @user.posts
+    @following = @user.following_users.limit(5)
+    @followers = @user.followers_by_type('user').limit(5)
   end
 
   def followers
