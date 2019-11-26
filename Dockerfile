@@ -2,8 +2,16 @@ FROM ruby:2.3-slim
 
 # Install the dependencies
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-nodejs yarn build-essential libpq-dev imagemagick git-all nano
+    build-essential libpq-dev imagemagick curl
 
+# Install NodeJS v8
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && apt-get install -y nodejs
+
+# Install Yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update && apt-get install -y yarn
 
 # Set the path
 ENV INSTALL_PATH /social-hub
