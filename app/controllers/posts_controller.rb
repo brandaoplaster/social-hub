@@ -3,10 +3,16 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, update, :destroy]
 
   def index
-    @user = current_user
-    @post = current_user.posts.map { |post| post }
-    current_user.all_following.each { |user| user.posts.each { |post| post << post } }
-    @posts = posts.sort_by &:created_at
+    @post = Post.new
+    posts = @user.posts.map { |post| post }
+    @user.all_following.each { |user| user.posts.each{|post| posts << post } }
+    @posts = (posts.sort_by! { |post| post.created_at }).reverse
+    @posts = @posts.paginate(:page => (params[:page] || 1), :per_page => 10)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -16,6 +22,7 @@ class PostsController < ApplicationController
       if @post.save
         format.json { render json: @post, status: :created }
         format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.js   { render :file => "/app/views/posts/show.js.erb" }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
         format.html { redirect_to posts_path }
