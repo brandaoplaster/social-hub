@@ -64,10 +64,14 @@
 
             <% else %>
               <li>
-                <a href="/users/sign_in">Login</a>
+                <a href="/users/sign_in">
+                  Login
+                </a>
               </li>
               <li>
-                <a href="/users/sign_up">Register</a>
+                <a href="/users/sign_up">
+                  Register
+                </a>
               </li>
             <% end %>
 
@@ -82,15 +86,18 @@
 
   <% if current_user %>
     <li class="search-field">
+
       <%= search_form_for @q, url: search_path do |f| %>
         <%= f.search_field :name_cont, placeholder: "Search.." %>
       <% end %>
+
     </li>
     <li>
       <%= link_to 'Feed', posts_path %>
     </li>
     <li>
-      <%= link_to 'Profile', user_path(current_user) %></li>
+      <%= link_to 'Profile', user_path(current_user) %>
+    </li>
     <li>
       <%= link_to 'Config', edit_user_registration_path(current_user) %>
     </li>
@@ -102,13 +109,17 @@
     </li>
   <% else %>
     <li>
-      <a href="/users/sign_in">Log in</a>
+      <a href="/users/sign_in">
+        Log in
+      </a>
     </li>
     <li>
       <div class="divider"></div>
     </li>
     <li>
-      <a href="/users/sign_up">Register</a>
+      <a href="/users/sign_up">
+        Register
+      </a>
     </li>
     <li>
       <div class="divider"></div>
