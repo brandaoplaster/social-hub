@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_post, only: [:show, :edit, update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = current_user
     @post = Post.new
     posts = @user.posts.map { |post| post }
     @user.all_following.each { |user| user.posts.each{|post| posts << post } }

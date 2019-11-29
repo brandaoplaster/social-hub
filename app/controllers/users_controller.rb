@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :followings, followers]
+  before_action :set_user, only: [:show, :followings, :followers]
 
   def show
     @posts = @user.posts

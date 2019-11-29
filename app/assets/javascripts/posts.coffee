@@ -14,7 +14,7 @@ $(document).on "turbolinks:load", ->
           finish_posts = true
 
     $(window).scroll ->
-      if $(window).scrollTo() + $(window).height() == $(document).height()
+      if $(window).scrollTop() + $(window).height() == $(document).height()
         if (finish_posts == false && loading == false)
           reload(next_page++)
       return
@@ -22,6 +22,8 @@ $(document).on "turbolinks:load", ->
     $(document).on "click", ".reload", (e)->
       $('#posts').html('')
       reload(1)
+      next_page = 2
+      finish_posts = false
 
   $('body').on 'ajax:success', '#new_post', (e, data, status, xhr) ->
     Materialize.toast('Post created', 4000, 'green')
