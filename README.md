@@ -1,24 +1,33 @@
-# README
+# Social hub
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app inspired by twitter, where it allows the user to create post, 
+comment post and like the post, besides having the possibility to follow 
+other users or be follow
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+>You just need have docker-compose installed in your machine.
 
-* System dependencies
+## Getting Started
+>To get the app running, run the following commands:
 
-* Configuration
+  ```docker
+    docker-compose build
+    docker-compose run --rm webiste bundle install
+    docker-compose run --rm website bundle exec rails db:create
+    docker-compose run --rm website bundle exec rails db:migrate
+    docker-compose up
+  ```
 
-* Database creation
+## Built With
 
-* Database initialization
+* [Ruby on Rails](https://rubyonrails.org/) - Dependency Management
+* [Materialize](https://materializecss.com/) - Dependency Management
 
-* How to run the test suite
+## Authors
 
-* Services (job queues, cache servers, search engines, etc.)
+* **Lucas Brandão** - [brandaoplaster](https://github.com/brandaoplaster)
 
-* Deployment instructions
+## License
 
-* ...
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
