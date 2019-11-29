@@ -2,5 +2,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize-sprockets
-//= require jquery-readyselector
+//= jquery-readyselector
 //= require_tree .
