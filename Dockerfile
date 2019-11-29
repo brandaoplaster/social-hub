@@ -2,7 +2,7 @@ FROM ruby:2.3-slim
 
 # Install the dependencies
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-    build-essential libpq-dev imagemagick curl
+    build-essential libpq-dev imagemagick curl git-all
 
 # Install NodeJS v8
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
