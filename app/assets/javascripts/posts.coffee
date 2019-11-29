@@ -1,4 +1,4 @@
-$(document).on "turbolinks", ->
+$(document).on "turbolinks:load", ->
   $(".posts-index").ready ->
     next_page = 2
     finish_posts = false
